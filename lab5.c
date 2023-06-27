@@ -20,44 +20,39 @@ void matrixVectorMultiplication(double* matrix, double* vector, double* result, 
 
 int main(int argc, char* argv[]) {
     int size, rank;
-    int rows, columns, localColumns;
-    double* matrix = NULL;
-    double* vector = NULL;
-    double* result = NULL;
+    int rows=9, columns=4, localColumns;
+    double matrix[rows][colums]={
+        {1, 2, -1, 2}, {3, 0, 4, -2}, {2, 3, 3, 5},
+        {1, 2, -1, 2}, {2, 3, 3, 5}, {1, 2, -1, 2},
+        {3, 0, 4, 3}, {1, 2, -1, 2}, {3, 0, 4,-2}
+        };
+    double vector[colums] = {-1, 2, 1, 3};
+    double result[rows] = {0, };
 
     MPI_Init(NULL, NULL);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
     if (rank == 0) {
-        // Введення розмірності матриці та вектора на процесі 0
-        printf("Введіть кількість рядків матриці: ");
-        scanf("%d", &rows);
-
-        printf("Введіть кількість стовпців матриці: ");
-        scanf("%d", &columns);
-
-        printf("Введіть значення вектора:\n");
-        vector = (double*)malloc(columns * sizeof(double));
-        for (int i = 0; i < columns; i++) {
-            scanf("%lf", &vector[i]);
-        }
-
         // Розсилка розмірності матриці та вектора на всі процеси
         MPI_Bcast(&rows, 1, MPI_INT, 0, MPI_COMM_WORLD);
         MPI_Bcast(&columns, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
-        // Виділення пам'яті для матриці та результуючого вектора на процесі 0
-        matrix = (double*)malloc(rows * columns * sizeof(double));
-        result = (double*)malloc(rows * sizeof(double));
-
-        // Введення значень матриці на процесі 0
-        printf("Введіть значення матриці:\n");
+        printf("Матриця \n");
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                scanf("%lf", &matrix[i * columns + j]);
+                printf("%d ", matrix[i][j]);
             }
+            printf("\n");
         }
+
+        printf("Вектор \n");
+
+        for (int i = 0; i < rows; i++) {
+            printf("%d ", vector[i][j]);
+        }
+
+        printf("\n");
     } else {
         // Отримання розмірності матриці та вектора на інших процесах
         MPI_Bcast(&rows, 1, MPI_INT, 0, MPI_COMM_WORLD);
