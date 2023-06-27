@@ -21,12 +21,12 @@ void matrixVectorMultiplication(double* matrix, double* vector, double* result, 
 int main(int argc, char* argv[]) {
     int size, rank;
     int rows=9, columns=4, localColumns;
-    double matrix[rows][colums]={
+    double matrix[rows][columns]={
         {1, 2, -1, 2}, {3, 0, 4, -2}, {2, 3, 3, 5},
         {1, 2, -1, 2}, {2, 3, 3, 5}, {1, 2, -1, 2},
         {3, 0, 4, 3}, {1, 2, -1, 2}, {3, 0, 4,-2}
         };
-    double vector[colums] = {-1, 2, 1, 3};
+    double vector[columns] = {-1, 2, 1, 3};
     double result[rows] = {0, };
 
     MPI_Init(NULL, NULL);
