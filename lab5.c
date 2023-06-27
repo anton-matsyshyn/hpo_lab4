@@ -66,6 +66,20 @@ int main(int argc, char *argv[]) {
 
     // Виведення результату на процесі 0
     if (rank == 0) {
+        printf("\n");
+        printf("Matrix:\n");
+        for (int i=0; i<rows; i++) {
+            for (int j=0; j<columns; j++) {
+                print("%.2f ", matrix[i * columns + j]);
+            }
+            print("\n");
+        }
+
+        for (int i=0; i<rows; i++) {
+            print("%.2f ", vector[i]);
+        }
+
+        print("\n");
         printf("Result:\n");
         for (int i = 0; i < rows; i++) {
             printf("%.2f ", result[i]);
