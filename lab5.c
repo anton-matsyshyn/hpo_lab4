@@ -34,14 +34,55 @@ int main(int argc, char* argv[]) {
         MPI_Bcast(&rows, 1, MPI_INT, 0, MPI_COMM_WORLD);
         MPI_Bcast(&columns, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
-        matrix={
-            {1, 2, -1, 2}, {3, 0, 4, -2}, {2, 3, 3, 5},
-            {1, 2, -1, 2}, {2, 3, 3, 5}, {1, 2, -1, 2},
-            {3, 0, 4, 3}, {1, 2, -1, 2}, {3, 0, 4,-2}
-            };
-        vector = {-1, 2, 1, 3};
-        result= {0, };
+        matrix[0][0]=1;
+        matrix[0][1]=2;
+        matrix[0][2]=-1;
+        matrix[0][3]=2;
 
+        matrix[1][0]=3;
+        matrix[1][1]=0;
+        matrix[1][2]=4;
+        matrix[1][3]=-2;
+
+        matrix[2][0]=5;
+        matrix[2][1]=6;
+        matrix[2][2]=-8;
+        matrix[2][3]=1;
+
+        matrix[3][0]=6;
+        matrix[3][1]=3;
+        matrix[3][2]=7;
+        matrix[3][3]=-9;
+
+        matrix[4][0]=4;
+        matrix[4][1]=1;
+        matrix[4][2]=-2;
+        matrix[4][3]=6;
+
+        matrix[5][0]=7;
+        matrix[5][1]=5;
+        matrix[5][2]=-8;
+        matrix[5][3]=3;
+
+        matrix[6][0]=5;
+        matrix[6][1]=2;
+        matrix[6][2]=-1;
+        matrix[6][3]=6;
+
+        matrix[7][0]=3;
+        matrix[7][1]=7;
+        matrix[7][2]=-9;
+        matrix[7][3]=1;
+
+        matrix[8][0]=3;
+        matrix[8][1]=3;
+        matrix[8][2]=-1;
+        matrix[8][3]=4;
+
+        vector[0]=-1;
+        vector[1]=2;
+        vector[2]=1;
+        vector[3]=3;
 
         printf("Матриця \n");
         for (int i = 0; i < rows; i++) {
