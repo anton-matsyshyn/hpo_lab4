@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
         printf("Вектор \n");
 
         for (int i = 0; i < rows; i++) {
-            printf("%d ", vector[i][j]);
+            printf("%d ", vector[i]);
         }
 
         printf("\n");
