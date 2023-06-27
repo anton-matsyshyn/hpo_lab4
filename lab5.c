@@ -75,12 +75,13 @@ int main(int argc, char *argv[]) {
             printf("\n");
         }
 
-        for (int i=0; i<rows; i++) {
+        printf("\nVector:\n");
+        for (int i=0; i<columns; i++) {
             printf("%.2f ", vector[i]);
         }
 
         printf("\n");
-        printf("Result:\n");
+        printf("\nResult:\n");
         for (int i = 0; i < rows; i++) {
             printf("%.2f ", result[i]);
         }
