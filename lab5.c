@@ -13,7 +13,7 @@ void matrixVectorMultiplication(double *matrix, double *vector, double *result, 
 
 int main(int argc, char *argv[]) {
     int rank, size;
-    int rows = 9; // Розмір матриці
+    int rows = 8; // Розмір матриці
     int columns = 4; // Розмір вектора
     int localRows; // Кількість рядків для кожного процесу
     int localColumns; // Кількість стовпців для кожного процесу
