@@ -34,6 +34,7 @@ int main(int argc, char** argv) {
     int rows = 9;
     int columns = 4;
     int localColumns = columns / size;
+    int remainingColumns = columns % size;
 
     double* matrix = NULL;
     double* vector = NULL;
@@ -50,6 +51,15 @@ int main(int argc, char** argv) {
         // Заповнення матриці та вектора випадковими значеннями
         srand(time(NULL));
         fillMatrixAndVector(matrix, vector, rows, columns);
+    }
+
+    // Розсилка кількості рядків та стовпців матриці
+    MPI_Bcast(&rows, 1, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Bcast(&columns, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+    // Обчислення локального розміру стовпців для кожного процесу
+    if (rank < remainingColumns) {
+        localColumns += 1;
     }
 
     // Виділення пам'яті для локальних частин матриці та вектора
