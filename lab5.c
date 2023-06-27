@@ -70,16 +70,16 @@ int main(int argc, char *argv[]) {
         printf("Matrix:\n");
         for (int i=0; i<rows; i++) {
             for (int j=0; j<columns; j++) {
-                print("%.2f ", matrix[i * columns + j]);
+                printf("%.2f ", matrix[i * columns + j]);
             }
-            print("\n");
+            printf("\n");
         }
 
         for (int i=0; i<rows; i++) {
-            print("%.2f ", vector[i]);
+            printf("%.2f ", vector[i]);
         }
 
-        print("\n");
+        printf("\n");
         printf("Result:\n");
         for (int i = 0; i < rows; i++) {
             printf("%.2f ", result[i]);
