@@ -21,13 +21,9 @@ void matrixVectorMultiplication(double* matrix, double* vector, double* result, 
 int main(int argc, char* argv[]) {
     int size, rank;
     int rows=9, columns=4, localColumns;
-    double matrix[rows][columns]={
-        {1, 2, -1, 2}, {3, 0, 4, -2}, {2, 3, 3, 5},
-        {1, 2, -1, 2}, {2, 3, 3, 5}, {1, 2, -1, 2},
-        {3, 0, 4, 3}, {1, 2, -1, 2}, {3, 0, 4,-2}
-        };
-    double vector[columns] = {-1, 2, 1, 3};
-    double result[rows] = {0, };
+    double matrix[rows][columns];
+    double vector[rows];
+    double result[columns];
 
     MPI_Init(NULL, NULL);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
@@ -37,6 +33,15 @@ int main(int argc, char* argv[]) {
         // Розсилка розмірності матриці та вектора на всі процеси
         MPI_Bcast(&rows, 1, MPI_INT, 0, MPI_COMM_WORLD);
         MPI_Bcast(&columns, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+        matrix={
+            {1, 2, -1, 2}, {3, 0, 4, -2}, {2, 3, 3, 5},
+            {1, 2, -1, 2}, {2, 3, 3, 5}, {1, 2, -1, 2},
+            {3, 0, 4, 3}, {1, 2, -1, 2}, {3, 0, 4,-2}
+            };
+        vector = {-1, 2, 1, 3};
+        result= {0, };
+
 
         printf("Матриця \n");
         for (int i = 0; i < rows; i++) {
